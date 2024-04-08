@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Footer from "./components/Footer";
+import getAllLinks from "@/app/lib/getAllLinks";
 
 
-export default function Home() {
+export default async function Home() {
+  const links = await getAllLinks()
   return (
     <main>
  <div imgUrl={'https://www.salnet.xyz/sal.png'} title={'salnetx'} description = {'I am a fullstack developer, 9 - 9 remote worker, community builder, and a solo traveller. I love to build apps that solve real life problems.'} xuser={'@salnetx'} weburl={'salnet.xyz'} summary={'Hi there. This is Sal.'}>
@@ -93,6 +95,10 @@ export default function Home() {
 <div
      className="max-w-lg px-4 mx-auto text-left md:max-w-none md:text-center "
 >
+<ul>
+{links.map(link=><li key={link.key}>{link.name}</li>)}
+
+</ul>
    
    
  
@@ -100,20 +106,7 @@ export default function Home() {
 <Footer homepage={'homepage'} />
 
 
-{/* <hr className="hidden sm:block mx-5 sm:mt-32 sm:mb-0" />
-<footer className="pb-16 sm:pb-6">
-<div className="max-w-screen-xl px-4 sm:pt-8 pt-4 mx-auto sm:px-6 lg:px-8">
-<div className="sm:flex sm:items-center sm:justify-between">
-<div className="flex sm:justify-center justify-start sm:justify-start">
-  <h1 className="text-2xl font-semibold">Salnetx</h1>
-</div>
 
-<p className="mt-4 text-sm sm:text-center text-left lg:text-right lg:mt-0">
-&copy; salnet &nbsp; &nbsp; <Link href="/refund">Refund</Link> &nbsp; <Link href="/terms">Terms</Link> &nbsp; <Link href="/privacy">Privacy</Link> &nbsp; &nbsp; <Link href="/support">Support</Link>
-</p>
-</div>
-</div>
-</footer> */}
     </div>
     
     </div>
